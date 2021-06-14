@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('/post', PostController::class);
+
+Route::apiResource('/post_comment', Post_CommentController::class)->only([
+    'show'
+]);
