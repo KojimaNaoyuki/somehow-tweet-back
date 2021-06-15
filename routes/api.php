@@ -16,6 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('/post', PostController::class);
-Route::apiResource('/comment', CommentController::class)->only([
-    'store'
-]);
+Route::apiResource('/comment', CommentController::class);

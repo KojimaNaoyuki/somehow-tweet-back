@@ -14,7 +14,11 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $items = Comment::all(); //全件取得
+
+        return response()->json([
+            'data' => $items
+        ], 200);
     }
 
     /**
@@ -40,7 +44,17 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        $item = Comment::find($comment);
+
+        if ($item) {
+            return response()->json([
+                'data' => $item
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Not found',
+            ], 404);
+        }
     }
 
     /**
@@ -52,7 +66,20 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        //
+        $update = [
+            'message' => $request->message,
+            'url' => $request->url
+        ];
+        $item = Comment::where('id', $comment->id)->update($update);
+        if ($item) {
+            return response()->json([
+                'message' => 'Updated successfully',
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Not found',
+            ], 404);
+        }
     }
 
     /**
@@ -63,6 +90,16 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $item = Comment::where('id', $comment->id)->delete();
+
+        if ($item) {
+            return response()->json([
+                'message' => 'Deleted successfully',
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Not found',
+            ], 404);
+        }
     }
 }
