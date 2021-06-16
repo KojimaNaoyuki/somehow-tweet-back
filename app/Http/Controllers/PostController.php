@@ -67,8 +67,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $update = [
-            'message' => $request->message,
-            'url' => $request->url
+            'good_num' => $request->good_num
         ];
         $item = Post::where('id', $post->id)->update($update);
         if ($item) {
