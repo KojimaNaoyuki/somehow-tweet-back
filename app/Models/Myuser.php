@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Myuser extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'email']; //許可
 
     public function Posts()
     {

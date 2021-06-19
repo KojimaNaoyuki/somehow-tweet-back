@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $Post)
     {
-        $item = Post::find($Post)->first()->load('Comments');
+        $item = Post::find($Post)->load('Comments');
 
         if ($item) {
             return response()->json([
