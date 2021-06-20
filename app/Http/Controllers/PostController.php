@@ -42,9 +42,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $Post)
+    public function show(Post $post)
     {
-        $item = Post::find($Post)->load('Comments');
+        $item = Post::find($post)->load('Comments');
 
         if ($item) {
             return response()->json([
