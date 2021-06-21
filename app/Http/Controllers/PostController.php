@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $item = Post::where('id', $post->id)->get();
+        $item = Post::find($post->id)->load('Comments');
 
         info($item);
 
@@ -91,6 +91,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        info($post);
         $item = Post::where('id', $post->id)->delete();
 
         if ($item) {

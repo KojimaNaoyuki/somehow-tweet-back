@@ -67,6 +67,17 @@ class UserGoodController extends Controller
      */
     public function destroy(UserGood $userGood)
     {
-        //
+        info($userGood);
+        $item = UserGood::where('id', $userGood->id)->delete();
+
+        if ($item) {
+            return response()->json([
+                'message' => 'Deleted successfully',
+            ], 200);
+        } else {
+            return response()->json([
+                'message' => 'Not found',
+            ], 404);
+        }
     }
 }
