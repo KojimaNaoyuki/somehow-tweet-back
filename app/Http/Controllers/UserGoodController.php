@@ -65,10 +65,9 @@ class UserGoodController extends Controller
      * @param  \App\Models\UserGood  $userGood
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserGood $userGood)
+    public function destroy($id)
     {
-        info($userGood);
-        $item = UserGood::where('id', $userGood->id)->delete();
+        $item = UserGood::where('post_id', $id)->delete();
 
         if ($item) {
             return response()->json([
