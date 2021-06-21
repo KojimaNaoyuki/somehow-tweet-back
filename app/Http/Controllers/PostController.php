@@ -44,7 +44,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $item = Post::find($post)->load('Comments');
+        $item = Post::where('id', $post->id)->get();
+
+        info($item);
 
         if ($item) {
             return response()->json([
